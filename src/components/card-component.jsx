@@ -27,7 +27,8 @@ const CardComponent = () => {
       { id: 9, name: "5", status: false },
       { id: 10, name: "5", status: false },
       { id: 11, name: "6", status: false },
-      { id: 12, name: "6", status: false },
+      { id: 12, name: "6", status: false },     { id: 13, name: "7", status: false },
+    { id: 14, name: "7", status: false },
     ];
 
     const shuffled = shuffleArray(initialCards);
@@ -63,9 +64,35 @@ const CardComponent = () => {
       }, 500);
     }
   }, [firstNumber, secondNumber, cards]);
-
+const handleRestart = () => {
+  const initialCards = [
+    { id: 1, name: "1", status: false },
+    { id: 2, name: "1", status: false },
+    { id: 3, name: "2", status: false },
+    { id: 4, name: "2", status: false },
+    { id: 5, name: "3", status: false },
+    { id: 6, name: "3", status: false },
+    { id: 7, name: "4", status: false },
+    { id: 8, name: "4", status: false },
+    { id: 9, name: "5", status: false },
+    { id: 10, name: "5", status: false },
+    { id: 11, name: "6", status: false },
+    { id: 12, name: "6", status: false },
+     { id: 13, name: "7", status: false },
+    { id: 14, name: "7", status: false },
+  ];
+  const shuffled = shuffleArray(initialCards);
+  setCards(shuffled);
+  setFirstNumber(null);
+  setSecondNumber(null);
+};
   return (
     <div className="centered-container container mx-auto row">
+        <div className="text-center">
+  <button onClick={handleRestart} className="btn btn-primary my-3">
+    Resart
+  </button>
+</div>
       {cards.map((card, index) => (
         <div
           key={card.id}
@@ -81,7 +108,7 @@ const CardComponent = () => {
         >
           {card.status || index === firstNumber || index === secondNumber
             ? card.name
-            : "?"}
+            : <h1>?</h1>}
         </div>
       ))}
     </div>
